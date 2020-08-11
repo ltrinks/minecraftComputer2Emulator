@@ -1,12 +1,17 @@
 public class translate {
 
     // converts a decimal value to a string of binary that is 16 bits
-    public static String toBinary(int result) { // takes in an integer and returns a String
+    public static String toBinary(int result, int bits) { // takes in an integer and returns a String
         String binaryResult = "";
-        int binaryTest = 32768; // the value at 16 bits
+        int binaryTest = 1;
         int workingResult = result;
 
-        if (result > 65535) {    // if too big to be displayed properly return as carry
+        for (int i = 1; i < bits; i++) {
+            binaryTest = binaryTest * 2; // sets the value of the first test bit to the value of the last bit
+
+        }
+
+        if (result > 65535 || result > binaryTest) {    // if too big to be displayed properly return as carry
             return "carry";
         }
 
@@ -27,12 +32,12 @@ public class translate {
     // converts a binary string that is 16 bits into a decimal integer
     public static int toDecimal(String result) { // takes in a String and returns an integer
         int decimalResult = 0;
-        int binaryValue = 32768; // value at 16 bits
+        int binaryValue = 1; // value at 16 bits
         String workingResult = result;
 
-        if (workingResult.length() != 16) { // if the string isnt 16 bits then return -1
-            return -1;
-        }
+       for (int i = 1; i < result.length(); i++) { //makes it so that it can translate it no matter how many bits are given
+           binaryValue = binaryValue * 2;
+       }
 
         while (binaryValue >= 1) { //while the bit is above or at 1
             if (workingResult.charAt(0) == '1') { // if the bit is 1, add its value to the sum
