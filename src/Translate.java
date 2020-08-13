@@ -1,4 +1,4 @@
-public class translate {
+public class Translate {
 
     // converts a decimal value to a string of binary that is 16 bits
     public static String toBinary(int result, int bits) { // takes in an integer and returns a String
@@ -20,12 +20,15 @@ public class translate {
         }
 
         while (binaryTest >= 1) {
+
             if (workingResult - binaryTest >= 0) {
                 binaryResult = binaryResult + "1";
                 workingResult = workingResult - binaryTest; // if the bit should turn on, its puts 1 and subtracts the bit from the workingResult
-            } else {
+            }
+            else {
                 binaryResult = binaryResult + "0";
             }
+
             binaryTest = binaryTest / 2;      // moves to next bit
         }
 
@@ -44,13 +47,17 @@ public class translate {
        }
 
         while (binaryValue >= 1) { //while the bit is above or at 1
+
             if (workingResult.charAt(0) == '1') { // if the bit is 1, add its value to the sum
                 decimalResult += binaryValue;
-            } else if (workingResult.charAt(0) == '0') { //if it is 0, do nothing
+            }
+            else if (workingResult.charAt(0) == '0') { //if it is 0, do nothing
                 decimalResult += 0;
-            } else { // if it is not 0 or 1, return -1
+            }
+            else { // if it is not 0 or 1, return -1
                 return -1;
             }
+
             workingResult = workingResult.substring(1, workingResult.length()); //remove the last bit
             binaryValue = binaryValue / 2; //change the working bit to the next smallest one
         }

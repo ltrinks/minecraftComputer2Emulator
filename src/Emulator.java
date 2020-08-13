@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class emulator {
+public class Emulator {
     public static void main(String[] args) {
        Scanner scanner= new Scanner(System.in);
        boolean quit = false;
@@ -15,11 +15,11 @@ public class emulator {
            }
 
            if (command.equals("binary")) {
-               emulator.binaryTranslator();
+               Emulator.binaryTranslator();
            }
 
            if (command.equals("decimal")) {
-               emulator.decimalTranslator();
+               Emulator.decimalTranslator();
            }
 
        }
@@ -39,7 +39,7 @@ public class emulator {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What binary value");
         String input1 = scanner.nextLine();
-        System.out.println("How you want a certain amount of digits");
+        System.out.println("should the string have a certain length");
         int input2 = 0;
         if (scanner.nextLine().equals("yes")) {
             System.out.println("How many");
