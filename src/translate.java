@@ -6,13 +6,17 @@ public class translate {
         int binaryTest = 1;
         int workingResult = result;
 
+        if (result < 0) {
+            return "error";
+        }
+
         for (int i = 1; i < bits; i++) {
             binaryTest = binaryTest * 2; // sets the value of the first test bit to the value of the last bit
 
         }
 
         if (result > 65535 || result > binaryTest) {    // if too big to be displayed properly return as carry
-            return "carry";
+            return "error";
         }
 
         while (binaryTest >= 1) {
@@ -32,7 +36,7 @@ public class translate {
     // converts a binary string that is 16 bits into a decimal integer
     public static int toDecimal(String result) { // takes in a String and returns an integer
         int decimalResult = 0;
-        int binaryValue = 1; // value at 16 bits
+        int binaryValue = 1; // value to begin multiplying by
         String workingResult = result;
 
        for (int i = 1; i < result.length(); i++) { //makes it so that it can translate it no matter how many bits are given
@@ -54,6 +58,26 @@ public class translate {
         return decimalResult;
     }
 
+
+    // takes a binary result and returns a string that has the decimal value in a certain number of digits
+    public static String toDecimal(String result, int digits) {
+        String decimalResult = Integer.toString(toDecimal(result));  // brings in the integer value and converts it to a string
+
+        if (decimalResult.equals("-1")) {  //if the main toDecimal method encounters an error, return a string that says error
+            return "error";
+        }
+
+        if (decimalResult.length() > digits) { //if the original number of digits exceeds the desired number of digits, return a string that says error
+            return "error";
+        }
+
+
+        for (int i = 0; i < (digits - decimalResult.length()); i++) { // for every digit the original is off, add a zero in the front
+            decimalResult = "0" + decimalResult;
+        }
+
+        return decimalResult;
+    }
 
 }
 
