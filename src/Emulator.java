@@ -7,6 +7,7 @@ public class Emulator {
 
 
        while (quit == false) {   // this is not working
+           System.out.println("Awaiting command");
 
            String command = scanner.nextLine();
 
@@ -31,7 +32,7 @@ public class Emulator {
         int input1 = Integer.parseInt(scanner.nextLine());
         System.out.println("How many bits");
         int input2 = Integer.parseInt(scanner.nextLine());
-        String inBinary = translate.toBinary(input1, input2);
+        String inBinary = Translate.toBinary(input1, input2);
         System.out.println(inBinary);
     }
 
@@ -44,10 +45,10 @@ public class Emulator {
         if (scanner.nextLine().equals("yes")) {
             System.out.println("How many");
             input2 = Integer.parseInt(scanner.nextLine());
-            System.out.println(translate.toDecimal(input1, input2));
+            System.out.println(Translate.toDecimal(input1, input2));
             return;
         }
-        int inDecimal = translate.toDecimal(input1);
+        int inDecimal = Translate.toDecimal(input1);
         System.out.println(inDecimal);
     }
 
