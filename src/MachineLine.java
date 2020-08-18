@@ -3,6 +3,7 @@ public class MachineLine {
     boolean isStart = false; //will say if the line is the start of a program
     int line; //what line the code should be placed on in memory
     String machineCode = ""; //the machine language encoded in the line
+    String assemblyCode = "";
     String warnings = ""; //things the checker notices are odd but don't break it
     String errors = ""; //things that make the line unable to be read
     boolean isValidLine = false; //if the machine can be properly translated it will be set to true

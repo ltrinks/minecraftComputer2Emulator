@@ -1,4 +1,11 @@
 public class Translate {
+    private static int truthCounter;
+
+    public static void isTruth(boolean truth) {
+        if (truth == true) {
+            truthCounter ++;
+        }
+    }
 
     // converts a decimal value to a string of binary that is 16 bits
     public static String toBinary(int result, int bits) { // takes in an integer and returns a String
@@ -86,5 +93,39 @@ public class Translate {
         return decimalResult;
     }
 
+    public static String toAssembly(String machine) { //translates a line of machine code into assembly language
+        truthCounter = 0; // keeps track of what was able to translate and what wasn't, after the method if the counter is not the proper value, the system will know the line was not properly translated
+
+        String assembly = "";
+        String workingMachine = machine;
+
+        Check.MachineLineIsProperLength(machine); //check if the machine code is the proper length
+
+        assembly += Check.GoTo(machine.substring(0, 7)); //checks if go to is true and adds the result to assembly
+        workingMachine = workingMachine.substring(8);
+
+        //check force
+
+        //check load 1 and load 2
+
+        //check op
+
+        //check save
+
+        //check booleans
+
+        // check output
+
+        // check if the number of truths is correct
+
+
+
+
+
+        return assembly;
+    }
+
 }
+
+
 
