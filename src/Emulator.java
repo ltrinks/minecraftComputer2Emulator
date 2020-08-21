@@ -11,7 +11,7 @@ public class Emulator {
 
            String command = scanner.nextLine();
 
-           if (command.equals("stop")) {
+           if (command.equals("quit")) {
                quit = true;
            }
 

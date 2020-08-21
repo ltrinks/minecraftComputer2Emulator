@@ -99,12 +99,23 @@ public class Translate {
         String assembly = "";
         String workingMachine = machine;
 
-        Check.MachineLineIsProperLength(machine); //check if the machine code is the proper length
+        //for testing purposes
+        while (workingMachine.length() < 48) {
+                workingMachine = workingMachine + "0";
+        }
+        System.out.println(workingMachine.length());
 
-        assembly += Check.GoTo(machine.substring(0, 7)); //checks if go to is true and adds the result to assembly
-        workingMachine = workingMachine.substring(8);
+        if (Check.MachineLineIsProperLength(workingMachine) == false) {
+            return "Invalid number of bits";
+        }
+
+        //check goto
+        assembly += Check.GoTo(workingMachine.substring(0, 7));
+        workingMachine = workingMachine.substring(7);
 
         //check force
+        assembly += Check.Force(workingMachine.substring(0, 13));
+        workingMachine = workingMachine.substring(13);
 
         //check load 1 and load 2
 

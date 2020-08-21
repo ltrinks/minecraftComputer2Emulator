@@ -1,10 +1,12 @@
 public class Check {
 
     // checks if the the length of the machine line is the proper length to attempt to be translated
-    public static void MachineLineIsProperLength(String machineLine) {
+    public static boolean MachineLineIsProperLength(String machineLine) {
         if (machineLine.length() == 48) {
             Translate.isTruth(true);
+            return true;
         }
+        return false;
     }
 
     //takes in a string and checks to see if it is a valid GoTo input and returns the assembly
@@ -17,8 +19,24 @@ public class Check {
                 return "Invalid GOTO";
             }
         }
+
         Translate.isTruth(true);
-       return " ;";
+        return " ;";
+    }
+
+    // checks if there is a force value and if it is valid it will return the assembly
+    public static String Force(String force) {
+        if (force.charAt(12) == '1') {
+            if (Check.IsProperInput(force.substring(0,8)) == true && Check.IsRAMAddress(force.substring(9,12)) == true) {
+                Translate.isTruth(true);
+                    return " FORCE " + Translate.toDecimal(force.substring(0,8), 3) + " IN RAM " + Translate.toDecimal(force.substring(8,12), 1) + ";";
+                } else {
+                return "Invalid FORCE";
+            }
+        }
+
+        Translate.isTruth(true);
+        return " ;";
     }
 
     // checks to see if a given value is a proper rom address
